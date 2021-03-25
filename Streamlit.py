@@ -90,7 +90,7 @@ if rad == "Data Analysis":
     st.header("**Data Analysis**")
 
     st.subheader("Company wise data")
-    st.markdown("The following section shows the company wise (to be selected from the dropdown) percentages of the five values - Condition, Generalization, Modality, Numeric Quantifier and the Number of Vague terms")
+    st.markdown("To view, companywise, the percentage breakdown of which category of ambiguity inducing terminologies introduce ambiguity to which extent, measured as percentages, we offer the following drop down menu displaying values, in each case, of - Condition, Generalization, Modality, Numeric Quantifier and the Number of Vague terms")
     rad_comp = st.selectbox("Select the Company.", Company)
 
     for i in range(0, len(Company)):
@@ -103,7 +103,7 @@ if rad == "Data Analysis":
 # Navigation : Columns
 
     st.subheader("Parameter wise data")
-    st.markdown("This section displays the data visually about the distribution of quantities like condition, generalization etc. across the companies whose privacy policies were used in the corpus")
+    st.markdown("To view the data in terms of the categories that introduce ambiguity into the document, we present the this section, which displays the data visually about the distribution of quantities like condition, generalization etc. across the companies whose privacy policies were used in the corpu.s")
     radio = st.selectbox("Select the parameter", Columns)
    
     for i in range(0, len(Columns)):
@@ -123,7 +123,7 @@ if rad == "Data Analysis":
 if rad == "Query Analysis":
 
     st.header("Query Analysis")
-    st.markdown("Using the Closed Domain Question Answering toolkit we created a system to query the corpus for specific queries that produced the following responses.")
+    st.markdown("Using the Closed Domain Question Answering toolkit we created a system to query the privacy policy documents for verbal answers. The model was trained upon the corpus, after which queries regarding comon concerns were made. Answers as found, are displayed below for the user to view.")
 
 
     # parse data into meaningful dataframes and arrays
