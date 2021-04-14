@@ -130,7 +130,7 @@ if rad == "Data Analysis":
 
     
 
-    st.line_chart(df.iloc[selected_data[0]:selected_data[1],0:4])
+    st.bar_chart(df.iloc[selected_data[0]:selected_data[1],0:4])
 
     st.markdown("----")
 
