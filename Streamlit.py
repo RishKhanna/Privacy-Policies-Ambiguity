@@ -43,12 +43,11 @@ df = pd.DataFrame(distrubutions,
                  index = file_names)
 df[df['Num Vague Terms']!=0].to_csv('./Distrubution.csv')
 df[df['Num Vague Terms']==0].to_csv('./No_Terms.csv')
-Df["Name"] = Df.index
-Df["Name"] = Df["Name"].map(lambda x: str(x)[:-4])
-Df["Name"]= Df["Name"].str.replace("-"," ")
-Df["Name"]= Df["Name"].str.replace(","," ")
-Df.set_index('Name')
-
+df["Name"] = df.index
+df["Name"] = df["Name"].map(lambda x: str(x)[:-4])
+df["Name"]= df["Name"].str.replace("-"," ")
+df["Name"]= df["Name"].str.replace(","," ")
+df = df.set_index("Name")
 
 # Plottinf the dataframe df
 # figure= sns.distplot(df)
