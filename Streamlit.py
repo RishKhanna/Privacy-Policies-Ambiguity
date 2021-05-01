@@ -15,6 +15,7 @@ Path = "./New Folder With Items/"
 filelist = os.listdir(Path)
 txt_files = []
 file_names = []
+num = []
 
 # constants for query analysis
 data = pd.read_json('queries.json')
@@ -31,7 +32,10 @@ for i in filelist:
     if i.endswith(".txt"):
         file_names.append(i)
         with open(Path + i, 'r', encoding='utf8') as f:
-            txt_files.append(f.read())
+            data = f.read()
+            txt_files.append(data)
+            words = data.split()
+            num.append(len(words))
 
 preprocessed_files = [ functions.preprocess_text(i) for i in txt_files ]
 
