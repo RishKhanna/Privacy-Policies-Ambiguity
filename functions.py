@@ -1,4 +1,4 @@
-import re
+import re, remove_stopwords
 
 def combining_words(output):
     for i in range(len(output)):
@@ -67,6 +67,7 @@ def preprocess_text(txt_input):
     return output
 
 def generate_distrubution(list_input):
+    nonstopword_count = remove_stopwords.count_without_stopwords(list_input)
     Condition = ['depending', 'necessary', 'appropriate',
                  'inappropriate', 'as needed', 'as applicable',
                  'otherwise reasonably', 'sometimes',
@@ -97,7 +98,8 @@ def generate_distrubution(list_input):
             num_counter += 1
             vague_words += 1
     if vague_words == 0:
-        return (0,0,0,0,0)
+        return (0,0,0,0,0, nonstopword_count)
     percent = (cond_count*100/vague_words, gen_count*100/vague_words,
-               mod_count*100/vague_words, num_counter*100/vague_words, vague_words )
+               mod_count*100/vague_words, num_counter*100/vague_words,
+                vague_words, nonstopword_count )
     return percent
