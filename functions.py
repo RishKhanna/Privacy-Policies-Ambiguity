@@ -98,8 +98,14 @@ def generate_distrubution(list_input):
             num_counter += 1
             vague_words += 1
     if vague_words == 0:
-        return (0,0,0,0,0, nonstopword_count)
-    percent = (cond_count*100/vague_words, gen_count*100/vague_words,
-               mod_count*100/vague_words, num_counter*100/vague_words,
-                vague_words, nonstopword_count )
+            return (0,0,0,0,0, nonstopword_count)
+    if nonstopword_count == 0:
+         percent = (cond_count*100/vague_words, gen_count*100/vague_words,
+                mod_count*100/vague_words, num_counter*100/vague_words,
+                    vague_words, 100 )
+    else:
+        percent = (cond_count*100/vague_words, gen_count*100/vague_words,
+                mod_count*100/vague_words, num_counter*100/vague_words,
+                    vague_words, vague_words*100/nonstopword_count )
+
     return percent

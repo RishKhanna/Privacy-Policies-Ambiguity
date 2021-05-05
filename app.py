@@ -25,32 +25,7 @@ org_list = {}
 chart_dict = {}
 columns_queries = ["Keyword", "Phrase", "Relevance"]
 
-
-# file read
-for i in filelist:
-    if i.endswith(".txt"):
-        file_names.append(i)
-        with open(Path + i, 'r', encoding='utf8') as f:
-            txt_files.append(f.read())
-
-preprocessed_files = [ functions.preprocess_text(i) for i in txt_files ]
-
-distrubutions = [functions.generate_distrubution(i) for i in preprocessed_files]
-
-df = pd.DataFrame(distrubutions,
-                  columns=['Condition', 'Generalization',
-                        'Modality', 'Numeric quantifier', 'Num Vague Terms'],
-                 index = file_names)
-df[df['Num Vague Terms']!=0].to_csv('./Distrubution.csv')
-df[df['Num Vague Terms']==0].to_csv('./No_Terms.csv')
-
-
-# Plottinf the dataframe df
-# figure= sns.distplot(df)
-# figure = plt.xlabel('Alcohol Percentage')
-# figure = plt.ylabel('Count')
-# figure = plt.title("Alcohol Content")
-
+df = pd.read_csv('./Distrubution.csv', index_col=0)
 
 Columns = df.columns
 Company = df.index
@@ -131,6 +106,7 @@ if rad == "Data Analysis":
     
 
     st.line_chart(df.iloc[selected_data[0]:selected_data[1],0:4])
+    st.line_chart(df.iloc[selected_data[0]:selected_data[1],5:6])
 
     st.markdown("----")
 
